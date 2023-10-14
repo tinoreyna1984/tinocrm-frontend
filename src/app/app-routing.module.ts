@@ -8,12 +8,12 @@ const routes: Routes = [
   {
     path: 'auth',
     loadChildren: () => import('./auth/auth.module').then( m => m.AuthModule ),
-    canActivate: [isNotAuthenticatedGuard]
+    canActivate: [isNotAuthenticatedGuard] // ruta pública
   },
   {
     path: 'crm',
     loadChildren: () => import('./crm/crm.module').then( m => m.CrmModule ),
-    canActivate: [isAuthenticatedGuard]
+    canActivate: [isAuthenticatedGuard] // ruta privada, requiere autenticación
   },
   {
     path: '404',

@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { FacturasLayoutComponent } from './components/facturas-layout/facturas-layout.component';
-import { FacturasListComponent } from './pages/facturas-list/facturas-list.component';
+import { ClientesLayoutComponent } from './components/clientes-layout/clientes-layout.component';
+import { ClientesListComponent } from './pages/clientes-list/clientes-list.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: FacturasLayoutComponent,
+    component: ClientesLayoutComponent,
     children: [
       {
         path: '',
-        component: FacturasListComponent,
+        component: ClientesListComponent,
       },
       {
         path: '**',
@@ -24,4 +24,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class FacturasRoutingModule { }
+export class ClientesRoutingModule { }

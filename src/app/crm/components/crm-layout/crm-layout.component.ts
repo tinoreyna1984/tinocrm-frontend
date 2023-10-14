@@ -3,10 +3,10 @@ import { AuthService } from '../../../auth/services/auth.service';
 
 @Component({
   selector: 'app-crm',
-  templateUrl: './crm.component.html',
-  styleUrls: ['./crm.component.css']
+  templateUrl: './crm-layout.component.html',
+  styleUrls: ['./crm-layout.component.css']
 })
-export class CrmComponent implements OnInit  {
+export class CrmLayoutComponent implements OnInit  {
 
   userRole: string | null = '';
   userRealName: string | null = '';

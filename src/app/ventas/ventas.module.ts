@@ -3,17 +3,21 @@ import { CommonModule } from '@angular/common';
 import { VentasLayoutComponent } from './components/ventas-layout/ventas-layout.component';
 import { VentasListComponent } from './pages/ventas-list/ventas-list.component';
 import { VentasRoutingModule } from './ventas-routing.module';
+import { VentasTableComponent } from './components/ventas-table/ventas-table.component';
+import { MaterialModule } from '../material/material.module';
 
 
 
 @NgModule({
   declarations: [
     VentasLayoutComponent,
-    VentasListComponent
+    VentasListComponent,
+    VentasTableComponent
   ],
   imports: [
     CommonModule,
-    VentasRoutingModule
+    VentasRoutingModule,
+    MaterialModule
   ]
 })
 export class VentasModule { }

@@ -24,6 +24,8 @@ export class AuthService {
 
   // Inicia el temporizador de inactividad
   private startInactivityTimer() {
+    const token = localStorage.getItem('jwt');
+    if(!token) return; // no hará nada si no hay token
     this.inactivityTimer = setTimeout(() => {
       // Si han pasado más de 30 minutos desde la última interacción, cierra la sesión
       Swal.fire(

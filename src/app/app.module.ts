@@ -8,6 +8,7 @@ import { Error404Component } from './shared/pages/error404/error404.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DashboardPageComponent } from './dashboard/pages/dashboard-page/dashboard-page.component';
+import { MaterialModule } from './material/material.module';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { DashboardPageComponent } from './dashboard/pages/dashboard-page/dashboa
     BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]

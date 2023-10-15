@@ -19,7 +19,7 @@
         <a class="nav-link" routerLink="facturas">Facturas</a>
         <a class="nav-link" routerLink="clientes">Clientes</a>
         <a class="nav-link" routerLink="productos">Productos</a>
-        <a class="nav-link" routerLink="usuarios">Usuarios</a>
+        <a class="nav-link" routerLink="usuarios" *ngIf="this.isAdminFlag === true">Usuarios</a>
       </div>
       <form class="d-flex">
         <div class="dropstart">

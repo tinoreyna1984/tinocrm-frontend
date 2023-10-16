@@ -33,4 +33,13 @@ export class VentasService {
     );
   }
 
+  borrarVenta(id: string) {
+    const token = localStorage.getItem('jwt');
+    const headers = { 'Authorization': 'Bearer ' + token }
+    return this.http.delete<any>(`${this.baseUrl}/ventas/${id}`, { headers })
+    .pipe(
+      map((response: any) => response)
+    );
+  }
+
 }

@@ -9,12 +9,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DashboardPageComponent } from './dashboard/pages/dashboard-page/dashboard-page.component';
 import { MaterialModule } from './material/material.module';
+import { MessageSnackBarComponent } from './shared/components/message-snack-bar/message-snack-bar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     Error404Component,
     DashboardPageComponent,
+    MessageSnackBarComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,20 @@
+<h1 mat-dialog-title>Factura</h1>
+<div mat-dialog-content>
+    <mat-card class="example-card">
+        <mat-card-header>
+          <mat-card-title>{{factura.codFactura}}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <mat-list role="list">
+                <mat-list-item role="listitem">Forma de pago: {{factura.formaPago}}</mat-list-item>
+                <mat-list-item role="listitem">Fecha de pago: {{factura.fechaPago}}</mat-list-item>
+                <mat-list-item role="listitem">Producto: {{factura.producto.nombreProducto}}</mat-list-item>
+                <mat-list-item role="listitem">Descripción del producto: {{factura.producto.descProducto}}</mat-list-item>
+                <mat-list-item role="listitem">Precio: {{factura.producto.precioProducto}}</mat-list-item>
+              </mat-list>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button mat-dialog-close class="btn btn-danger">Cerrar</button>
+        </mat-card-actions>
+      </mat-card>
+</div>

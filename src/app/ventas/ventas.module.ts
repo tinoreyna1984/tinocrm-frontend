@@ -10,6 +10,7 @@ import { ModifyVentaComponent } from './components/modify-venta/modify-venta.com
 import { DeleteVentaComponent } from './components/delete-venta/delete-venta.component';
 import { ShowVentaClienteComponent } from './components/show-venta-cliente/show-venta-cliente.component';
 import { ShowVentaFacturaComponent } from './components/show-venta-factura/show-venta-factura.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -27,7 +28,8 @@ import { ShowVentaFacturaComponent } from './components/show-venta-factura/show-
   imports: [
     CommonModule,
     VentasRoutingModule,
-    MaterialModule
+    MaterialModule,
+    SharedModule
   ]
 })
 export class VentasModule { }

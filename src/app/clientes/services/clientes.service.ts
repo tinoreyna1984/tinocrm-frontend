@@ -33,4 +33,13 @@ export class ClientesService {
     );
   }
 
+  borrarCliente(id: string) {
+    const token = localStorage.getItem('jwt');
+    const headers = { 'Authorization': 'Bearer ' + token }
+    return this.http.delete<any>(`${this.baseUrl}/clientes/${id}`, { headers })
+    .pipe(
+      map((response: any) => response)
+    );
+  }
+
 }

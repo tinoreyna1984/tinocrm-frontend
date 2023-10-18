@@ -4,6 +4,8 @@ import { FacturasLayoutComponent } from './components/facturas-layout/facturas-l
 import { FacturasListComponent } from './pages/facturas-list/facturas-list.component';
 import { FacturasRoutingModule } from './facturas-routing.module';
 import { FacturasTableComponent } from './components/facturas-table/facturas-table.component';
+import { MaterialModule } from '../material/material.module';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -15,7 +17,9 @@ import { FacturasTableComponent } from './components/facturas-table/facturas-tab
   ],
   imports: [
     CommonModule,
-    FacturasRoutingModule
+    FacturasRoutingModule,
+    MaterialModule,
+    SharedModule
   ]
 })
 export class FacturasModule { }

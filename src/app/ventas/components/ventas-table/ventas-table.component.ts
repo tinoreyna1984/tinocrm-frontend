@@ -19,7 +19,8 @@ export class VentasTableComponent implements OnInit {
     private cliente: MatDialog
   ) {}
 
-  //public ventas: Venta[] = [];
+  loading: boolean = false;
+
   public dataSource: MatTableDataSource<Venta> = new MatTableDataSource<Venta>(
     []
   );
@@ -41,9 +42,11 @@ export class VentasTableComponent implements OnInit {
 
   ngOnInit(): void {
     console.log('Invocar servicio de ventas...');
+    this.loading = true;
     this.ventasService.getVentas().subscribe((ventas: Venta[]) => {
       this.dataSource = new MatTableDataSource<Venta>(ventas);
       this.dataSource.paginator = this.paginator;
+      this.loading = false;
     });
   }
 
@@ -72,8 +75,10 @@ export class VentasTableComponent implements OnInit {
 
     // después de cerrar, refresca las ventas
     dialogRef.afterClosed().subscribe(() => {
+      this.loading = true;
       this.ventasService.getVentas().subscribe((ventas: Venta[]) => {
         this.dataSource.data = ventas;
+        this.loading = false;
       });
     });
   }

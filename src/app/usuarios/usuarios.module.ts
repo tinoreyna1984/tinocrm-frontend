@@ -4,6 +4,8 @@ import { UsuariosLayoutComponent } from './components/usuarios-layout/usuarios-l
 import { UsuariosListComponent } from './pages/usuarios-list/usuarios-list.component';
 import { UsuariosRoutingModule } from './usuarios-routing.module';
 import { UsuariosTableComponent } from './components/usuarios-table/usuarios-table.component';
+import { MaterialModule } from '../material/material.module';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -15,7 +17,9 @@ import { UsuariosTableComponent } from './components/usuarios-table/usuarios-tab
   ],
   imports: [
     CommonModule,
-    UsuariosRoutingModule
+    UsuariosRoutingModule,
+    MaterialModule,
+    SharedModule
   ]
 })
 export class UsuariosModule { }

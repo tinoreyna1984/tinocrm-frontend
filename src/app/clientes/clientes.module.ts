@@ -4,6 +4,8 @@ import { ClientesLayoutComponent } from './components/clientes-layout/clientes-l
 import { ClientesListComponent } from './pages/clientes-list/clientes-list.component';
 import { ClientesRoutingModule } from './clientes-routing.module';
 import { ClientesTableComponent } from './components/clientes-table/clientes-table.component';
+import { MaterialModule } from '../material/material.module';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -15,7 +17,9 @@ import { ClientesTableComponent } from './components/clientes-table/clientes-tab
   ],
   imports: [
     CommonModule,
-    ClientesRoutingModule
+    ClientesRoutingModule,
+    MaterialModule,
+    SharedModule
   ]
 })
 export class ClientesModule { }

@@ -1,1 +1,42 @@
-<p>facturas-table works!</p>
+<h1>Facturas</h1>
+<div class="mat-elevation-z8 table-responsive">
+    <table mat-table [dataSource]="dataSource">
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>#</th>
+        <td mat-cell *matCellDef="let factura">{{ factura.id }}</td>
+      </ng-container>
+      <ng-container matColumnDef="codFactura">
+        <th mat-header-cell *matHeaderCellDef>Código</th>
+        <td mat-cell *matCellDef="let factura">{{ factura.codFactura }}</td>
+      </ng-container>
+      <ng-container matColumnDef="formaPago">
+        <th mat-header-cell *matHeaderCellDef>Forma de pago</th>
+        <td mat-cell *matCellDef="let factura">{{ factura.formaPago }}</td>
+      </ng-container>
+      <ng-container matColumnDef="fechaPago">
+        <th mat-header-cell *matHeaderCellDef>Pagado el</th>
+        <td mat-cell *matCellDef="let factura">{{ factura.fechaPago }}</td>
+      </ng-container>
+      <ng-container matColumnDef="producto">
+        <th mat-header-cell *matHeaderCellDef>Producto</th>
+        <td mat-cell *matCellDef="let factura">
+          <!-- <button type="button" class="btn btn-primary my-2" (click)="openCliente(venta.cliente)"> -->
+          <button type="button" class="btn btn-primary my-2" >
+            Ver detalles de producto
+          </button>
+        </td>
+      </ng-container>
+    </table>
+  
+    <app-spinner [loading]="this.loading"></app-spinner>
+  
+    <mat-paginator
+      [pageSizeOptions]="[5, 10, 20]"
+      showFirstLastButtons
+      aria-label="Recorrer páginas"
+    >
+    </mat-paginator>
+  </div>

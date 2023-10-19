@@ -33,7 +33,7 @@ export class FacturasTableComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   ngOnInit(): void {
-    console.log('Invocar servicio de facturas...');
+    //console.log('Invocar servicio de facturas...');
     this.loading = true;
     this.facturasService.getFacturas().subscribe((facturas: Factura[]) => {
       this.dataSource = new MatTableDataSource<Factura>(facturas);

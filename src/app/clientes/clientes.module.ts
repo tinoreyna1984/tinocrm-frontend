@@ -6,6 +6,7 @@ import { ClientesRoutingModule } from './clientes-routing.module';
 import { ClientesTableComponent } from './components/clientes-table/clientes-table.component';
 import { MaterialModule } from '../material/material.module';
 import { SharedModule } from '../shared/shared.module';
+import { DeleteClienteComponent } from './components/delete-cliente/delete-cliente.component';
 
 
 
@@ -13,7 +14,8 @@ import { SharedModule } from '../shared/shared.module';
   declarations: [
     ClientesLayoutComponent,
     ClientesListComponent,
-    ClientesTableComponent
+    ClientesTableComponent,
+    DeleteClienteComponent
   ],
   imports: [
     CommonModule,

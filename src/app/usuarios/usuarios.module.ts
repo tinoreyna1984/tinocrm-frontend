@@ -6,6 +6,7 @@ import { UsuariosRoutingModule } from './usuarios-routing.module';
 import { UsuariosTableComponent } from './components/usuarios-table/usuarios-table.component';
 import { MaterialModule } from '../material/material.module';
 import { SharedModule } from '../shared/shared.module';
+import { EnabledStatusPipe } from './pipes/enabled-status.pipe';
 
 
 
@@ -13,7 +14,8 @@ import { SharedModule } from '../shared/shared.module';
   declarations: [
     UsuariosLayoutComponent,
     UsuariosListComponent,
-    UsuariosTableComponent
+    UsuariosTableComponent,
+    EnabledStatusPipe
   ],
   imports: [
     CommonModule,

@@ -16,7 +16,9 @@ import { DeleteVentaComponent } from '../delete-venta/delete-venta.component';
 export class VentasTableComponent implements OnInit {
   constructor(
     private ventasService: VentasService,
-    private cliente: MatDialog
+    private venta: MatDialog,
+    private cliente: MatDialog,
+    private factura: MatDialog
   ) {}
 
   loading: boolean = false;
@@ -41,7 +43,7 @@ export class VentasTableComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   ngOnInit(): void {
-    console.log('Invocar servicio de ventas...');
+    //console.log('Invocar servicio de ventas...');
     this.loading = true;
     this.ventasService.getVentas().subscribe((ventas: Venta[]) => {
       this.dataSource = new MatTableDataSource<Venta>(ventas);
@@ -59,7 +61,7 @@ export class VentasTableComponent implements OnInit {
   }
 
   openFactura(factura: any) {
-    this.cliente.open(ShowVentaFacturaComponent, {
+    this.factura.open(ShowVentaFacturaComponent, {
       data: factura,
       enterAnimationDuration: 250,
       exitAnimationDuration: 250,
@@ -67,7 +69,7 @@ export class VentasTableComponent implements OnInit {
   }
 
   openBorrarVenta(ventaID: string){
-    const dialogRef = this.cliente.open(DeleteVentaComponent, {
+    const dialogRef = this.venta.open(DeleteVentaComponent, {
       data: ventaID,
       enterAnimationDuration: 250,
       exitAnimationDuration: 250,

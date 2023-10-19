@@ -6,6 +6,7 @@ import { ProductosRoutingModule } from './productos-routing.module';
 import { ProductosTableComponent } from './components/productos-table/productos-table.component';
 import { MaterialModule } from '../material/material.module';
 import { SharedModule } from '../shared/shared.module';
+import { DeleteProductoComponent } from './components/delete-producto/delete-producto.component';
 
 
 
@@ -13,7 +14,8 @@ import { SharedModule } from '../shared/shared.module';
   declarations: [
     ProductosLayoutComponent,
     ProductosListComponent,
-    ProductosTableComponent
+    ProductosTableComponent,
+    DeleteProductoComponent
   ],
   imports: [
     CommonModule,

@@ -15,7 +15,7 @@ export class UsuariosService {
 
   constructor(private router: Router) { }
   
-  getusers(): Observable<User[]> {
+  getUsers(): Observable<User[]> {
     const token = localStorage.getItem('jwt');
     const headers = { 'Authorization': 'Bearer ' + token }
     return this.http.get<any>(`${this.baseUrl}/users`, { headers })
@@ -24,7 +24,7 @@ export class UsuariosService {
     );
   }
 
-  getuser(id: string): Observable<User>{
+  getUser(id: string): Observable<User>{
     const token = localStorage.getItem('jwt');
     const headers = { 'Authorization': 'Bearer ' + token }
     return this.http.get<any>(`${this.baseUrl}/users/${id}`, { headers })

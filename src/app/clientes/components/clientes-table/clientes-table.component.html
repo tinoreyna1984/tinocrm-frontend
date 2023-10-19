@@ -1,1 +1,54 @@
-<p>clientes-table works!</p>
+<h1>Clientes</h1>
+<button type="button" class="btn btn-success my-2">Agregar cliente</button>
+<div class="mat-elevation-z8 table-responsive">
+  <table mat-table [dataSource]="dataSource">
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef>#</th>
+      <td mat-cell *matCellDef="let cliente">{{ cliente.id }}</td>
+    </ng-container>
+    <ng-container matColumnDef="nombreCompleto">
+      <th mat-header-cell *matHeaderCellDef>Nombre</th>
+      <td mat-cell *matCellDef="let cliente">{{ cliente.nombreCliente }} {{ cliente.apellidosCliente }}</td>
+    </ng-container>
+    <ng-container matColumnDef="documento">
+      <th mat-header-cell *matHeaderCellDef>Documento</th>
+      <td mat-cell *matCellDef="let cliente">{{ cliente.tipoDoc }} - {{ cliente.docId }}</td>
+    </ng-container>
+    <ng-container matColumnDef="estadoCliente">
+      <th mat-header-cell *matHeaderCellDef>Estado del cliente</th>
+      <td mat-cell *matCellDef="let cliente">{{ cliente.estadoCliente }}</td>
+    </ng-container>
+    <ng-container matColumnDef="fonoCliente">
+      <th mat-header-cell *matHeaderCellDef>Fono</th>
+      <td mat-cell *matCellDef="let cliente">{{ cliente.fonoCliente }}</td>
+    </ng-container>
+    <ng-container matColumnDef="emailCliente">
+      <th mat-header-cell *matHeaderCellDef>Email</th>
+      <td mat-cell *matCellDef="let cliente">{{ cliente.emailCliente }}</td>
+    </ng-container>
+    <ng-container matColumnDef="modificar">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let cliente">
+          <button type="button" class="btn btn-info my-2">Modificar</button>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="borrar">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let cliente">
+          <button type="button" class="btn btn-danger my-2" (click)="openBorrarCliente(cliente.id)">Eliminar</button>
+        </td>
+      </ng-container>
+  </table>
+
+  <app-spinner [loading]="this.loading"></app-spinner>
+
+  <mat-paginator
+    [pageSizeOptions]="[5, 10, 20]"
+    showFirstLastButtons
+    aria-label="Recorrer páginas"
+  >
+  </mat-paginator>
+</div>

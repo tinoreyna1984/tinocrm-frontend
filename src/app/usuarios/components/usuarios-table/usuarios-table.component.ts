@@ -4,6 +4,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatDialog } from '@angular/material/dialog';
 import { User } from 'src/app/shared/interfaces/shared.interface';
 import { UsuariosService } from '../../services/usuarios.service';
+import { DeleteUsuarioComponent } from '../delete-usuario/delete-usuario.component';
 
 @Component({
   selector: 'app-usuarios-table',
@@ -30,6 +31,7 @@ export class UsuariosTableComponent {
     'role',
     'habilitado',
     'modificar',
+    //'habilitar',
     'borrar',
   ];
 
@@ -45,4 +47,20 @@ export class UsuariosTableComponent {
     });
   }
 
+  openBorrarUsuario(ventaID: string){
+    const dialogRef = this.usuario.open(DeleteUsuarioComponent, {
+      data: ventaID,
+      enterAnimationDuration: 250,
+      exitAnimationDuration: 250,
+    });
+
+    // después de cerrar, refresca las ventas
+    dialogRef.afterClosed().subscribe(() => {
+      this.loading = true;
+      this.usuariosService.getUsers().subscribe((usuarios: User[]) => {
+        this.dataSource.data = usuarios;
+        this.loading = false;
+      });
+    });
+  }
 }

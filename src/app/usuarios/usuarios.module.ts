@@ -7,6 +7,7 @@ import { UsuariosTableComponent } from './components/usuarios-table/usuarios-tab
 import { MaterialModule } from '../material/material.module';
 import { SharedModule } from '../shared/shared.module';
 import { EnabledStatusPipe } from './pipes/enabled-status.pipe';
+import { DeleteUsuarioComponent } from './components/delete-usuario/delete-usuario.component';
 
 
 
@@ -15,7 +16,8 @@ import { EnabledStatusPipe } from './pipes/enabled-status.pipe';
     UsuariosLayoutComponent,
     UsuariosListComponent,
     UsuariosTableComponent,
-    EnabledStatusPipe
+    EnabledStatusPipe,
+    DeleteUsuarioComponent
   ],
   imports: [
     CommonModule,

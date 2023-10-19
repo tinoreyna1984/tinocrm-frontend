@@ -33,7 +33,7 @@ export class UsuariosService {
     );
   }
 
-  borraruser(id: string) {
+  borrarUser(id: string) {
     const token = localStorage.getItem('jwt');
     const headers = { 'Authorization': 'Bearer ' + token }
     return this.http.delete<any>(`${this.baseUrl}/users/${id}`, { headers })

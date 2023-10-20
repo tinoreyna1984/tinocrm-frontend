@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Cliente } from 'src/app/shared/interfaces/shared.interface';
 import { ClientesService } from '../../services/clientes.service';
 import { DeleteClienteComponent } from '../delete-cliente/delete-cliente.component';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-clientes-table',
@@ -39,11 +40,19 @@ export class ClientesTableComponent implements OnInit {
   ngOnInit(): void {
     //console.log('Invocar servicio de clientes...');
     this.loading = true;
-    this.clientesService.getClientes().subscribe((clientes: Cliente[]) => {
-      this.dataSource = new MatTableDataSource<Cliente>(clientes);
-      this.dataSource.paginator = this.paginator;
-      this.loading = false;
-    });
+    this.clientesService.getClientes().subscribe(
+      {
+        next: (clientes: Cliente[]) => {
+            this.dataSource = new MatTableDataSource<Cliente>(clientes);
+            this.dataSource.paginator = this.paginator;
+            this.loading = false;
+        },
+        error: (e:any) => {
+          //console.error(e.message);
+          Swal.fire('Error en la carga', "Razón: " + e.message + ". Consulta con el administrador, por favor.", 'error' );
+        }
+      }
+    );
   }
 
   openBorrarCliente(clienteID: string){
@@ -57,10 +66,18 @@ export class ClientesTableComponent implements OnInit {
     dialogRef.afterClosed().subscribe(() => {
       this.loading = true;
       setTimeout(() => {
-        this.clientesService.getClientes().subscribe((clientes: Cliente[]) => {
-          this.dataSource.data = clientes;
-          this.loading = false;
-        });
+        this.clientesService.getClientes().subscribe(
+          {
+            next: (clientes: Cliente[]) => {
+              this.dataSource.data = clientes;
+              this.loading = false;
+            },
+            error: (e:any) => {
+              //console.error(e.message);
+              Swal.fire('Error en la carga', "Razón: " + e.message + ". Consulta con el administrador, por favor.", 'error' );
+            }
+          }
+        );
       }, 1800);
       
     });

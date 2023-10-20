@@ -3,6 +3,7 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MessageSnackBarComponent } from 'src/app/shared/components/message-snack-bar/message-snack-bar.component';
 import { ProductosService } from '../../services/productos.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-delete-producto',
@@ -18,11 +19,20 @@ export class DeleteProductoComponent {
 
 
   onBorrarProducto() {
-    this.productosService.borrarProducto(this.productoID).subscribe((response: any) => {
-      this.snackBar.openFromComponent(MessageSnackBarComponent, {
-        duration: 3500,
-        data: response.mensaje,
-      });
-    });
+    this.productosService.borrarProducto(this.productoID).subscribe(
+      {
+        next: (response: any) => {
+          this.snackBar.openFromComponent(MessageSnackBarComponent, {
+            duration: 3500,
+            data: response.mensaje,
+          });
+        },
+        error: (e:any) => {
+          //console.error(e.message);
+          Swal.fire('Error al borrar producto', "Razón: " + e.message + ". Consulta con el administrador, por favor.", 'error' );
+        }
+      }
+      
+    );
   }
 }

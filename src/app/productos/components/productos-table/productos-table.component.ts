@@ -7,6 +7,7 @@ import { ProductosService } from '../../services/productos.service';
 import { AuthService } from 'src/app/auth/services/auth.service';
 import { DeleteProductoComponent } from '../delete-producto/delete-producto.component';
 import { AddProductoComponent } from '../add-producto/add-producto.component';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-productos-table',
@@ -41,11 +42,20 @@ export class ProductosTableComponent {
     //console.log('Invocar servicio de productos...');
     this.isAdminFlag = this.authService.isAdmin();
     this.loading = true;
-    this.productosService.getProductos().subscribe((productos: Producto[]) => {
-      this.dataSource = new MatTableDataSource<Producto>(productos);
-      this.dataSource.paginator = this.paginator;
-      this.loading = false;
-    });
+    this.productosService.getProductos().subscribe(
+      {
+        next: (productos: Producto[]) => {
+          this.dataSource = new MatTableDataSource<Producto>(productos);
+          this.dataSource.paginator = this.paginator;
+          this.loading = false;
+        },
+        error: (e:any) => {
+          //console.error(e.message);
+          Swal.fire('Error en la carga', "Razón: " + e.message + ". Consulta con el administrador, por favor.", 'error' );
+        }
+      }
+      
+    );
   }
 
   openAgregarProducto() {
@@ -57,12 +67,19 @@ export class ProductosTableComponent {
     // después de cerrar, refresca las ventas
     dialogRef.afterClosed().subscribe(() => {
       this.loading = true;
-
       setTimeout(() => {
-        this.productosService.getProductos().subscribe((productos: Producto[]) => {
-            this.dataSource.data = productos;
-            this.loading = false;
-          });
+        this.productosService.getProductos().subscribe(
+          {
+            next: (productos: Producto[]) => {
+              this.dataSource.data = productos;
+              this.loading = false;
+            },
+            error: (e:any) => {
+              //console.error(e.message);
+              Swal.fire('Error en la carga', "Razón: " + e.message + ". Consulta con el administrador, por favor.", 'error' );
+            }
+          }
+        );
       }, 1800);
     });
   }
@@ -78,10 +95,18 @@ export class ProductosTableComponent {
     dialogRef.afterClosed().subscribe(() => {
       this.loading = true;
       setTimeout(() => {
-        this.productosService.getProductos().subscribe((productos: Producto[]) => {
-          this.dataSource.data = productos;
-          this.loading = false;
-        });
+        this.productosService.getProductos().subscribe(
+          {
+            next: (productos: Producto[]) => {
+              this.dataSource.data = productos;
+              this.loading = false;
+            },
+            error: (e:any) => {
+              //console.error(e.message);
+              Swal.fire('Error en la carga', "Razón: " + e.message + ". Consulta con el administrador, por favor.", 'error' );
+            }
+          }
+        );
       }, 1800);
     });
   }

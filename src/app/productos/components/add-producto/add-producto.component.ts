@@ -3,6 +3,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { ProductosService } from '../../services/productos.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MessageSnackBarComponent } from 'src/app/shared/components/message-snack-bar/message-snack-bar.component';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-add-producto',
@@ -27,13 +28,20 @@ export class AddProductoComponent {
   onAddProducto(){
     console.log(this.formAddProducto.value)
     this.productosService.addProducto(this.formAddProducto.value).subscribe(
-      (response: any) => {
-        console.log(response);
-        this.snackBar.openFromComponent(MessageSnackBarComponent, {
-          duration: 3500,
-          data: response.mensaje,
-        });
+      {
+        next: (response: any) => {
+          //console.log(response);
+          this.snackBar.openFromComponent(MessageSnackBarComponent, {
+            duration: 3500,
+            data: response.mensaje,
+          });
+        },
+        error: (e:any) => {
+          //console.error(e.message);
+          Swal.fire('Error al agregar producto', "Razón: " + e.message + ". Consulta con el administrador, por favor.", 'error' );
+        }
       }
+      
     )
   }
 

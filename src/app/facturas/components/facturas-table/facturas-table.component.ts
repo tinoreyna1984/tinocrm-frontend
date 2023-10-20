@@ -4,6 +4,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatDialog } from '@angular/material/dialog';
 import { Factura } from 'src/app/shared/interfaces/shared.interface';
 import { FacturasService } from '../../services/facturas.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-facturas-table',
@@ -35,11 +36,20 @@ export class FacturasTableComponent implements OnInit {
   ngOnInit(): void {
     //console.log('Invocar servicio de facturas...');
     this.loading = true;
-    this.facturasService.getFacturas().subscribe((facturas: Factura[]) => {
-      this.dataSource = new MatTableDataSource<Factura>(facturas);
-      this.dataSource.paginator = this.paginator;
-      this.loading = false;
-    });
+    this.facturasService.getFacturas().subscribe(
+      {
+        next: (facturas: Factura[]) => {
+          this.dataSource = new MatTableDataSource<Factura>(facturas);
+          this.dataSource.paginator = this.paginator;
+          this.loading = false;
+        },
+        error: (e:any) => {
+          //console.error(e.message);
+          Swal.fire('Error en la carga', "Razón: " + e.message + ". Consulta con el administrador, por favor.", 'error' );
+        }
+      }
+      
+    );
   }
 
 }

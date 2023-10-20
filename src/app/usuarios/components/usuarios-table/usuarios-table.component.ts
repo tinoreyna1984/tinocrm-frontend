@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { User } from 'src/app/shared/interfaces/shared.interface';
 import { UsuariosService } from '../../services/usuarios.service';
 import { DeleteUsuarioComponent } from '../delete-usuario/delete-usuario.component';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-usuarios-table',
@@ -40,11 +41,20 @@ export class UsuariosTableComponent {
   ngOnInit(): void {
     //console.log('Invocar servicio de ventas...');
     this.loading = true;
-    this.usuariosService.getUsers().subscribe((usuarios: User[]) => {
-      this.dataSource = new MatTableDataSource<User>(usuarios);
-      this.dataSource.paginator = this.paginator;
-      this.loading = false;
-    });
+    this.usuariosService.getUsers().subscribe(
+      {
+        next: (usuarios: User[]) => {
+          this.dataSource = new MatTableDataSource<User>(usuarios);
+          this.dataSource.paginator = this.paginator;
+          this.loading = false;
+        },
+        error: (e:any) => {
+          //console.error(e.message);
+          Swal.fire('Error en la carga', "Razón: " + e.message + ". Consulta con el administrador, por favor.", 'error' );
+        }
+      }
+      
+    );
   }
 
   openBorrarUsuario(ventaID: string){
@@ -58,10 +68,18 @@ export class UsuariosTableComponent {
     dialogRef.afterClosed().subscribe(() => {
       this.loading = true;
       setTimeout(() => {
-        this.usuariosService.getUsers().subscribe((usuarios: User[]) => {
-          this.dataSource.data = usuarios;
-          this.loading = false;
-        });
+        this.usuariosService.getUsers().subscribe(
+          {
+            next: (usuarios: User[]) => {
+              this.dataSource.data = usuarios;
+              this.loading = false;
+            },
+            error: (e:any) => {
+              //console.error(e.message);
+              Swal.fire('Error en la carga', "Razón: " + e.message + ". Consulta con el administrador, por favor.", 'error' );
+            }
+          }
+        );
       }, 1800);
     });
   }

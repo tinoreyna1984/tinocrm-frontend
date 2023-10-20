@@ -7,6 +7,7 @@ import { VentasService } from '../../services/ventas.service';
 import { ShowVentaClienteComponent } from '../show-venta-cliente/show-venta-cliente.component';
 import { ShowVentaFacturaComponent } from '../show-venta-factura/show-venta-factura.component';
 import { DeleteVentaComponent } from '../delete-venta/delete-venta.component';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-ventas-table',
@@ -45,11 +46,20 @@ export class VentasTableComponent implements OnInit {
   ngOnInit(): void {
     //console.log('Invocar servicio de ventas...');
     this.loading = true;
-    this.ventasService.getVentas().subscribe((ventas: Venta[]) => {
-      this.dataSource = new MatTableDataSource<Venta>(ventas);
-      this.dataSource.paginator = this.paginator;
-      this.loading = false;
-    });
+    this.ventasService.getVentas().subscribe(
+      {
+        next: (ventas: Venta[]) => {
+          this.dataSource = new MatTableDataSource<Venta>(ventas);
+          this.dataSource.paginator = this.paginator;
+          this.loading = false;
+        },
+        error: (e:any) => {
+          //console.error(e.message);
+          Swal.fire('Error en la carga', "Razón: " + e.message + ". Consulta con el administrador, por favor.", 'error' );
+        }
+      }
+      
+    );
   }
 
   openCliente(cliente: any) {
@@ -79,10 +89,18 @@ export class VentasTableComponent implements OnInit {
     dialogRef.afterClosed().subscribe(() => {
       this.loading = true;
       setTimeout(() => {
-        this.ventasService.getVentas().subscribe((ventas: Venta[]) => {
-          this.dataSource.data = ventas;
-          this.loading = false;
-        });
+        this.ventasService.getVentas().subscribe(
+          {
+            next: (ventas: Venta[]) => {
+              this.dataSource.data = ventas;
+              this.loading = false;
+            },
+            error: (e:any) => {
+              //console.error(e.message);
+              Swal.fire('Error en la carga', "Razón: " + e.message + ". Consulta con el administrador, por favor.", 'error' );
+            }
+          }
+        );
       }, 1800);
     });
   }

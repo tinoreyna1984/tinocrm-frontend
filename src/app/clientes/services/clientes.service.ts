@@ -33,6 +33,15 @@ export class ClientesService {
     );
   }
 
+  addCliente(formAddCliente:any): Observable<Cliente>{
+    const token = localStorage.getItem('jwt');
+    const headers = { 'Authorization': 'Bearer ' + token }
+    return this.http.post<any>(`${this.baseUrl}/clientes`, formAddCliente, { headers })
+    .pipe(
+      map((response: any) => response)
+    );
+  }
+
   borrarCliente(id: string) {
     const token = localStorage.getItem('jwt');
     const headers = { 'Authorization': 'Bearer ' + token }

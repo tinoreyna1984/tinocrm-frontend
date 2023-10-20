@@ -6,6 +6,7 @@ import { Cliente } from 'src/app/shared/interfaces/shared.interface';
 import { ClientesService } from '../../services/clientes.service';
 import { DeleteClienteComponent } from '../delete-cliente/delete-cliente.component';
 import Swal from 'sweetalert2';
+import { AddClienteComponent } from '../add-cliente/add-cliente.component';
 
 @Component({
   selector: 'app-clientes-table',
@@ -53,6 +54,32 @@ export class ClientesTableComponent implements OnInit {
         }
       }
     );
+  }
+
+  openAgregarCliente(){
+    const dialogRef = this.cliente.open(AddClienteComponent, {
+      enterAnimationDuration: 250,
+      exitAnimationDuration: 250,
+    });
+
+    // después de cerrar, refresca las ventas
+    dialogRef.afterClosed().subscribe(() => {
+      this.loading = true;
+      setTimeout(() => {
+        this.clientesService.getClientes().subscribe(
+          {
+            next: (clientes: Cliente[]) => {
+              this.dataSource.data = clientes;
+              this.loading = false;
+            },
+            error: (e:any) => {
+              //console.error(e.message);
+              Swal.fire('Error en la carga', "Razón: " + e.message + ". Consulta con el administrador, por favor.", 'error' );
+            }
+          }
+        );
+      }, 1800);
+    });
   }
 
   openBorrarCliente(clienteID: string){

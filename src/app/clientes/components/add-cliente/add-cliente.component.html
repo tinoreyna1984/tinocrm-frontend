@@ -1,0 +1,79 @@
+<h1 mat-dialog-title>Agregar cliente</h1>
+<div mat-dialog-content>
+  <form [formGroup]="formAddCliente" (ngSubmit)="onAddCliente()">
+    <div class="mb-3">
+      <label for="nombreCliente" class="form-label">Nombre</label>
+      <input
+        type="text"
+        id="nombreCliente"
+        formControlName="nombreCliente"
+        class="form-control"
+        required
+      />
+    </div>
+    <div class="mb-3">
+      <label for="apellidosCliente" class="form-label">Apellidos</label>
+      <input
+        type="text"
+        id="apellidosCliente"
+        formControlName="apellidosCliente"
+        class="form-control"
+        required
+      />
+    </div>
+    <div class="mb-3">
+      <label for="docId" class="form-label">Doc. Id.</label>
+      <input
+        type="text"
+        id="docId"
+        formControlName="docId"
+        class="form-control"
+        required
+      />
+    </div>
+    <div class="mb-3">
+        <label for="tipoDoc" class="form-label">Tipo doc.</label>
+        <select id="tipoDoc" class="form-select" formControlName="tipoDoc" required>
+            <option selected value="DNI">DNI</option>
+            <option value="CE">CE</option>
+            <option value="RUC">RUC</option>
+            <option value="PASAPORTE">Pasaporte</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="estadoCliente" class="form-label">Estado del cliente</label>
+        <select id="estadoCliente" class="form-select" formControlName="estadoCliente">
+            <option selected value="INTERESADO">INTERESADO</option>
+            <option value="CLIENTE">CLIENTE</option>
+        </select>
+    </div>
+    <div class="mb-3">
+      <label for="fonoCliente" class="form-label">Teléfono</label>
+      <input
+        type="text"
+        id="fonoCliente"
+        formControlName="fonoCliente"
+        class="form-control"
+        required
+      />
+    </div>
+    <div class="mb-3">
+      <label for="emailCliente" class="form-label">Email</label>
+      <input
+        type="text"
+        id="emailCliente"
+        formControlName="emailCliente"
+        class="form-control"
+        required
+      />
+    </div>
+    <div mat-dialog-actions class="d-flex gap-2 p-2">
+      <button type="submit" mat-button mat-dialog-close class="btn btn-success">
+        Agregar
+      </button>
+      <button mat-button mat-dialog-close class="btn btn-secondary">
+        Cancelar
+      </button>
+    </div>
+  </form>
+</div>

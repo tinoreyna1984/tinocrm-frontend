@@ -7,6 +7,8 @@ import { ClientesTableComponent } from './components/clientes-table/clientes-tab
 import { MaterialModule } from '../material/material.module';
 import { SharedModule } from '../shared/shared.module';
 import { DeleteClienteComponent } from './components/delete-cliente/delete-cliente.component';
+import { AddClienteComponent } from './components/add-cliente/add-cliente.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -15,13 +17,16 @@ import { DeleteClienteComponent } from './components/delete-cliente/delete-clien
     ClientesLayoutComponent,
     ClientesListComponent,
     ClientesTableComponent,
-    DeleteClienteComponent
+    DeleteClienteComponent,
+    AddClienteComponent
   ],
   imports: [
     CommonModule,
     ClientesRoutingModule,
     MaterialModule,
-    SharedModule
+    SharedModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class ClientesModule { }

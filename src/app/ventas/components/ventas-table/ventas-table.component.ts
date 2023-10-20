@@ -78,10 +78,12 @@ export class VentasTableComponent implements OnInit {
     // después de cerrar, refresca las ventas
     dialogRef.afterClosed().subscribe(() => {
       this.loading = true;
-      this.ventasService.getVentas().subscribe((ventas: Venta[]) => {
-        this.dataSource.data = ventas;
-        this.loading = false;
-      });
+      setTimeout(() => {
+        this.ventasService.getVentas().subscribe((ventas: Venta[]) => {
+          this.dataSource.data = ventas;
+          this.loading = false;
+        });
+      }, 1800);
     });
   }
 }

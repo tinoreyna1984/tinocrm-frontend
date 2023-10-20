@@ -56,10 +56,13 @@ export class ClientesTableComponent implements OnInit {
     // después de cerrar, refresca las ventas
     dialogRef.afterClosed().subscribe(() => {
       this.loading = true;
-      this.clientesService.getClientes().subscribe((clientes: Cliente[]) => {
-        this.dataSource.data = clientes;
-        this.loading = false;
-      });
+      setTimeout(() => {
+        this.clientesService.getClientes().subscribe((clientes: Cliente[]) => {
+          this.dataSource.data = clientes;
+          this.loading = false;
+        });
+      }, 1800);
+      
     });
   }
 }

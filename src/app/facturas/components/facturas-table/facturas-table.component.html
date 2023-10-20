@@ -1,6 +1,6 @@
 <h1>Facturas</h1>
 <div class="mat-elevation-z8 table-responsive">
-    <table mat-table [dataSource]="dataSource">
+    <table mat-table [dataSource]="dataSource" [hidden]="loading">
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
   
@@ -34,6 +34,7 @@
     <app-spinner [loading]="this.loading"></app-spinner>
   
     <mat-paginator
+      [disabled]="loading"
       [pageSizeOptions]="[5, 10, 20]"
       showFirstLastButtons
       aria-label="Recorrer páginas"

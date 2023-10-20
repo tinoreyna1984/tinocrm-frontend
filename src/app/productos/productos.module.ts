@@ -7,6 +7,8 @@ import { ProductosTableComponent } from './components/productos-table/productos-
 import { MaterialModule } from '../material/material.module';
 import { SharedModule } from '../shared/shared.module';
 import { DeleteProductoComponent } from './components/delete-producto/delete-producto.component';
+import { AddProductoComponent } from './components/add-producto/add-producto.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -15,13 +17,16 @@ import { DeleteProductoComponent } from './components/delete-producto/delete-pro
     ProductosLayoutComponent,
     ProductosListComponent,
     ProductosTableComponent,
-    DeleteProductoComponent
+    DeleteProductoComponent,
+    AddProductoComponent
   ],
   imports: [
     CommonModule,
     ProductosRoutingModule,
     MaterialModule,
-    SharedModule
+    SharedModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class ProductosModule { }

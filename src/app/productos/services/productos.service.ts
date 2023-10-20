@@ -29,7 +29,16 @@ export class ProductosService {
     const headers = { 'Authorization': 'Bearer ' + token }
     return this.http.get<any>(`${this.baseUrl}/productos/${id}`, { headers })
     .pipe(
-      map((cliente: any) => cliente)
+      map((response: any) => response)
+    );
+  }
+
+  addProducto(formAddProducto:any): Observable<Producto>{
+    const token = localStorage.getItem('jwt');
+    const headers = { 'Authorization': 'Bearer ' + token }
+    return this.http.post<any>(`${this.baseUrl}/productos`, formAddProducto, { headers })
+    .pipe(
+      map((response: any) => response)
     );
   }
 

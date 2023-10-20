@@ -57,10 +57,12 @@ export class UsuariosTableComponent {
     // después de cerrar, refresca las ventas
     dialogRef.afterClosed().subscribe(() => {
       this.loading = true;
-      this.usuariosService.getUsers().subscribe((usuarios: User[]) => {
-        this.dataSource.data = usuarios;
-        this.loading = false;
-      });
+      setTimeout(() => {
+        this.usuariosService.getUsers().subscribe((usuarios: User[]) => {
+          this.dataSource.data = usuarios;
+          this.loading = false;
+        });
+      }, 1800);
     });
   }
 }

@@ -6,14 +6,14 @@ import { Producto } from '../../../shared/interfaces/shared.interface';
 import { ProductosService } from '../../services/productos.service';
 import { AuthService } from 'src/app/auth/services/auth.service';
 import { DeleteProductoComponent } from '../delete-producto/delete-producto.component';
+import { AddProductoComponent } from '../add-producto/add-producto.component';
 
 @Component({
   selector: 'app-productos-table',
   templateUrl: './productos-table.component.html',
-  styleUrls: ['./productos-table.component.css']
+  styleUrls: ['./productos-table.component.css'],
 })
 export class ProductosTableComponent {
-
   constructor(
     private productosService: ProductosService,
     private authService: AuthService,
@@ -23,9 +23,8 @@ export class ProductosTableComponent {
   loading: boolean = false;
   isAdminFlag: boolean = false;
 
-  public dataSource: MatTableDataSource<Producto> = new MatTableDataSource<Producto>(
-    []
-  );
+  public dataSource: MatTableDataSource<Producto> =
+    new MatTableDataSource<Producto>([]);
 
   displayedColumns: string[] = [
     'id',
@@ -33,7 +32,7 @@ export class ProductosTableComponent {
     'descProducto',
     'precioProducto',
     'modificar',
-    'borrar'
+    'borrar',
   ];
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -49,7 +48,26 @@ export class ProductosTableComponent {
     });
   }
 
-  openBorrarProducto(productoID: string){
+  openAgregarProducto() {
+    const dialogRef = this.producto.open(AddProductoComponent, {
+      enterAnimationDuration: 250,
+      exitAnimationDuration: 250,
+    });
+
+    // después de cerrar, refresca las ventas
+    dialogRef.afterClosed().subscribe(() => {
+      this.loading = true;
+
+      setTimeout(() => {
+        this.productosService.getProductos().subscribe((productos: Producto[]) => {
+            this.dataSource.data = productos;
+            this.loading = false;
+          });
+      }, 1800);
+    });
+  }
+
+  openBorrarProducto(productoID: string) {
     const dialogRef = this.producto.open(DeleteProductoComponent, {
       data: productoID,
       enterAnimationDuration: 250,
@@ -59,10 +77,12 @@ export class ProductosTableComponent {
     // después de cerrar, refresca las ventas
     dialogRef.afterClosed().subscribe(() => {
       this.loading = true;
-      this.productosService.getProductos().subscribe((productos: Producto[]) => {
-        this.dataSource.data = productos;
-        this.loading = false;
-      });
+      setTimeout(() => {
+        this.productosService.getProductos().subscribe((productos: Producto[]) => {
+          this.dataSource.data = productos;
+          this.loading = false;
+        });
+      }, 1800);
     });
   }
 }

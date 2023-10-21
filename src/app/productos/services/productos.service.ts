@@ -42,6 +42,15 @@ export class ProductosService {
     );
   }
 
+  modifyProducto(formModifyProducto:any, id: string): Observable<Producto>{
+    const token = localStorage.getItem('jwt');
+    const headers = { 'Authorization': 'Bearer ' + token }
+    return this.http.put<any>(`${this.baseUrl}/productos/${id}`, formModifyProducto, { headers })
+    .pipe(
+      map((response: any) => response)
+    );
+  }
+
   borrarProducto(id: string) {
     const token = localStorage.getItem('jwt');
     const headers = { 'Authorization': 'Bearer ' + token }

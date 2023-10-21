@@ -41,7 +41,6 @@ export class AddProductoComponent {
           Swal.fire('Error al agregar producto', "Razón: " + e.message + ". Consulta con el administrador, por favor.", 'error' );
         }
       }
-      
     )
   }
 

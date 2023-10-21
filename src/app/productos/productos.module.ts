@@ -9,6 +9,7 @@ import { SharedModule } from '../shared/shared.module';
 import { DeleteProductoComponent } from './components/delete-producto/delete-producto.component';
 import { AddProductoComponent } from './components/add-producto/add-producto.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ModifyProductoComponent } from './components/modify-producto/modify-producto.component';
 
 
 
@@ -18,7 +19,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ProductosListComponent,
     ProductosTableComponent,
     DeleteProductoComponent,
-    AddProductoComponent
+    AddProductoComponent,
+    ModifyProductoComponent
   ],
   imports: [
     CommonModule,

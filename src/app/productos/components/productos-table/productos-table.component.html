@@ -26,7 +26,7 @@
     <ng-container matColumnDef="modificar">
       <th mat-header-cell *matHeaderCellDef></th>
       <td mat-cell *matCellDef="let producto">
-        <button type="button" class="btn btn-info my-2" *ngIf="this.isAdminFlag">Modificar</button>
+        <button type="button" class="btn btn-info my-2" (click)="openModificarProducto(producto.id)" *ngIf="this.isAdminFlag">Modificar</button>
       </td>
     </ng-container>
     <ng-container matColumnDef="borrar" >

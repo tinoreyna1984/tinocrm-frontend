@@ -7,6 +7,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatSnackBarModule,
     MatButtonModule,
     MatFormFieldModule,
+    MatProgressSpinnerModule,
   ]
 })
 export class MaterialModule { }

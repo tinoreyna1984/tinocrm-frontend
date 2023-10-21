@@ -50,6 +50,7 @@ export class ClientesTableComponent implements OnInit {
         },
         error: (e:any) => {
           //console.error(e.message);
+          this.loading = false;
           Swal.fire('Error en la carga', "Razón: " + e.message + ". Consulta con el administrador, por favor.", 'error' );
         }
       }
@@ -74,6 +75,7 @@ export class ClientesTableComponent implements OnInit {
             },
             error: (e:any) => {
               //console.error(e.message);
+              this.loading = false;
               Swal.fire('Error en la carga', "Razón: " + e.message + ". Consulta con el administrador, por favor.", 'error' );
             }
           }
@@ -101,6 +103,7 @@ export class ClientesTableComponent implements OnInit {
             },
             error: (e:any) => {
               //console.error(e.message);
+              this.loading = false;
               Swal.fire('Error en la carga', "Razón: " + e.message + ". Consulta con el administrador, por favor.", 'error' );
             }
           }

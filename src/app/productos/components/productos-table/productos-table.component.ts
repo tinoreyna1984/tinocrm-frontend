@@ -8,6 +8,7 @@ import { AuthService } from 'src/app/auth/services/auth.service';
 import { DeleteProductoComponent } from '../delete-producto/delete-producto.component';
 import { AddProductoComponent } from '../add-producto/add-producto.component';
 import Swal from 'sweetalert2';
+import { ModifyProductoComponent } from '../modify-producto/modify-producto.component';
 
 @Component({
   selector: 'app-productos-table',
@@ -51,6 +52,7 @@ export class ProductosTableComponent {
         },
         error: (e:any) => {
           //console.error(e.message);
+          this.loading = false;
           Swal.fire('Error en la carga', "Razón: " + e.message + ". Consulta con el administrador, por favor.", 'error' );
         }
       }
@@ -76,6 +78,35 @@ export class ProductosTableComponent {
             },
             error: (e:any) => {
               //console.error(e.message);
+              this.loading = false;
+              Swal.fire('Error en la carga', "Razón: " + e.message + ". Consulta con el administrador, por favor.", 'error' );
+            }
+          }
+        );
+      }, 1800);
+    });
+  }
+
+  openModificarProducto(productoID: string) {
+    const dialogRef = this.producto.open(ModifyProductoComponent, {
+      data: productoID,
+      enterAnimationDuration: 250,
+      exitAnimationDuration: 250,
+    });
+
+    // después de cerrar, refresca las ventas
+    dialogRef.afterClosed().subscribe(() => {
+      this.loading = true;
+      setTimeout(() => {
+        this.productosService.getProductos().subscribe(
+          {
+            next: (productos: Producto[]) => {
+              this.dataSource.data = productos;
+              this.loading = false;
+            },
+            error: (e:any) => {
+              //console.error(e.message);
+              this.loading = false;
               Swal.fire('Error en la carga', "Razón: " + e.message + ". Consulta con el administrador, por favor.", 'error' );
             }
           }
@@ -103,6 +134,7 @@ export class ProductosTableComponent {
             },
             error: (e:any) => {
               //console.error(e.message);
+              this.loading = false;
               Swal.fire('Error en la carga', "Razón: " + e.message + ". Consulta con el administrador, por favor.", 'error' );
             }
           }

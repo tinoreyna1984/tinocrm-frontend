@@ -1,0 +1,4 @@
+#crm-container {
+    height: calc(100vh - 52px);
+    padding: 5px 10px;
+}

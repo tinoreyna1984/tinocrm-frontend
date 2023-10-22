@@ -44,7 +44,7 @@ export class ModifyUsuarioComponent implements OnInit {
             name: this.usuario.name,
             lastName: this.usuario.lastName,
             username: this.usuario.username,
-            password: this.usuario.password, //TODO traer el password en limpio
+            password: '',
             email: this.usuario.email,
             role: this.usuario.role,
           });
@@ -64,9 +64,17 @@ export class ModifyUsuarioComponent implements OnInit {
 
   onModifyUsuario(){
     let tmpForm: any = this.formModifyUsuario.value;
-    const { role } = this.formModifyUsuario.value;
+    const { role, password } = this.formModifyUsuario.value;
     if(!role)
       tmpForm = {...tmpForm, role: 'USER'};
+    if(!password){
+      Swal.fire(
+        'Ingresa tu clave',
+        'La clave es requerida',
+        'error'
+      );
+      return; //TODO: mantener el dialog abierto mientras este campo falte
+    }
     this.usuariosService.modifyUser(tmpForm, this.usuarioID).subscribe({
       next: (response: any) => {
         //console.log(response);

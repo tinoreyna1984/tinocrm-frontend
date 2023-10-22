@@ -1,5 +1,5 @@
 <h1 mat-dialog-title>Modificar usuario</h1>
-<div mat-dialog-content>
+<div mat-dialog-content #formModifUsuario>
   <form [formGroup]="formModifyUsuario" [hidden]="loading"  (ngSubmit)="onModifyUsuario()">
     <div class="mb-3">
       <label for="name" class="form-label">Nombre</label>
@@ -36,7 +36,9 @@
         id="password"
         formControlName="password"
         class="form-control"
+        aria-describedby="indicacion"
         required>
+        <div id="indicacion" class="form-text text-light">Por seguridad, ingresa nueva clave, por favor</div>
     </div>
     <div class="mb-3">
       <label for="email" class="form-label">Email</label>

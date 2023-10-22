@@ -9,6 +9,7 @@ import { SharedModule } from '../shared/shared.module';
 import { DeleteClienteComponent } from './components/delete-cliente/delete-cliente.component';
 import { AddClienteComponent } from './components/add-cliente/add-cliente.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ModifyClienteComponent } from './components/modify-cliente/modify-cliente.component';
 
 
 
@@ -18,7 +19,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ClientesListComponent,
     ClientesTableComponent,
     DeleteClienteComponent,
-    AddClienteComponent
+    AddClienteComponent,
+    ModifyClienteComponent
   ],
   imports: [
     CommonModule,

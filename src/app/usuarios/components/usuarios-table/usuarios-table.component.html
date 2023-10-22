@@ -1,5 +1,5 @@
 <h1>Usuarios</h1>
-<button type="button" class="btn btn-success my-2">Agregar usuario</button>
+<button type="button" class="btn btn-success my-2" (click)="openAgregarUsuario()">Agregar usuario</button>
 <div class="mat-elevation-z8 table-responsive">
   <table mat-table [dataSource]="dataSource" [hidden]="loading">
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -29,18 +29,18 @@
       <th mat-header-cell *matHeaderCellDef>Habilitado</th>
       <td mat-cell *matCellDef="let usuario">{{ usuario.enabled | enabledStatus }}</td>
     </ng-container>
-    <ng-container matColumnDef="modificar">
-      <th mat-header-cell *matHeaderCellDef></th>
-      <td mat-cell *matCellDef="let usuario">
-        <button type="button" class="btn btn-info my-2">Modificar</button>
-      </td>
-    </ng-container>
     <!-- <ng-container matColumnDef="habilitar">
       <th mat-header-cell *matHeaderCellDef></th>
       <td mat-cell *matCellDef="let usuario">
         <button type="button" class="btn btn-outline-info my-2">{{usuario.enabled ? "Deshabilitar" : "Habilitar"}}</button>
       </td>
     </ng-container> -->
+    <ng-container matColumnDef="modificar">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let usuario">
+        <button type="button" class="btn btn-info my-2" (click)="openModificarUsuario(usuario.id)">Modificar</button>
+      </td>
+    </ng-container>
     <ng-container matColumnDef="borrar">
       <th mat-header-cell *matHeaderCellDef></th>
       <td mat-cell *matCellDef="let usuario">

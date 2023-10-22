@@ -8,6 +8,9 @@ import { MaterialModule } from '../material/material.module';
 import { SharedModule } from '../shared/shared.module';
 import { EnabledStatusPipe } from './pipes/enabled-status.pipe';
 import { DeleteUsuarioComponent } from './components/delete-usuario/delete-usuario.component';
+import { AddUsuarioComponent } from './components/add-usuario/add-usuario.component';
+import { ModifyUsuarioComponent } from './components/modify-usuario/modify-usuario.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -17,13 +20,17 @@ import { DeleteUsuarioComponent } from './components/delete-usuario/delete-usuar
     UsuariosListComponent,
     UsuariosTableComponent,
     EnabledStatusPipe,
-    DeleteUsuarioComponent
+    DeleteUsuarioComponent,
+    AddUsuarioComponent,
+    ModifyUsuarioComponent
   ],
   imports: [
     CommonModule,
     UsuariosRoutingModule,
     MaterialModule,
-    SharedModule
+    SharedModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class UsuariosModule { }

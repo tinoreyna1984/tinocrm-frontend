@@ -42,6 +42,15 @@ export class ClientesService {
     );
   }
 
+  modifyCliente(formModifyCliente:any, id: string): Observable<Cliente>{
+    const token = localStorage.getItem('jwt');
+    const headers = { 'Authorization': 'Bearer ' + token }
+    return this.http.put<any>(`${this.baseUrl}/clientes/${id}`, formModifyCliente, { headers })
+    .pipe(
+      map((response: any) => response)
+    );
+  }
+
   borrarCliente(id: string) {
     const token = localStorage.getItem('jwt');
     const headers = { 'Authorization': 'Bearer ' + token }

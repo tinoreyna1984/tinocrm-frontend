@@ -1,4 +1,4 @@
-import { Component, inject, Inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { ProductosService } from '../../services/productos.service';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';

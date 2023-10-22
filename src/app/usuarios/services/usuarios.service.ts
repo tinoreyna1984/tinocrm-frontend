@@ -33,6 +33,24 @@ export class UsuariosService {
     );
   }
 
+  addUser(formAddCliente:any): Observable<User>{
+    const token = localStorage.getItem('jwt');
+    const headers = { 'Authorization': 'Bearer ' + token }
+    return this.http.post<any>(`${this.baseUrl}/users`, formAddCliente, { headers })
+    .pipe(
+      map((response: any) => response)
+    );
+  }
+
+  modifyUser(formModifyUser:any, id: string): Observable<User>{
+    const token = localStorage.getItem('jwt');
+    const headers = { 'Authorization': 'Bearer ' + token }
+    return this.http.put<any>(`${this.baseUrl}/users/${id}`, formModifyUser, { headers })
+    .pipe(
+      map((response: any) => response)
+    );
+  }
+
   borrarUser(id: string) {
     const token = localStorage.getItem('jwt');
     const headers = { 'Authorization': 'Bearer ' + token }

@@ -1,0 +1,11 @@
+<h1 mat-dialog-title>Detalles del producto</h1>
+<div mat-dialog-content>
+    <mat-list role="list">
+        <mat-list-item role="listitem">Nombre: {{producto.nombreProducto}}</mat-list-item>
+        <mat-list-item role="listitem">Descripción {{producto.descProducto}}</mat-list-item>
+        <mat-list-item role="listitem">Precio: {{producto.precioProducto}}</mat-list-item>
+    </mat-list>
+    <mat-card-actions>
+      <button mat-button mat-dialog-close class="btn btn-danger">Cerrar</button>
+    </mat-card-actions>
+</div>

@@ -6,6 +6,7 @@ import { FacturasRoutingModule } from './facturas-routing.module';
 import { FacturasTableComponent } from './components/facturas-table/facturas-table.component';
 import { MaterialModule } from '../material/material.module';
 import { SharedModule } from '../shared/shared.module';
+import { ShowFacturaProductoComponent } from './components/show-factura-producto/show-factura-producto.component';
 
 
 
@@ -13,7 +14,8 @@ import { SharedModule } from '../shared/shared.module';
   declarations: [
     FacturasLayoutComponent,
     FacturasListComponent,
-    FacturasTableComponent
+    FacturasTableComponent,
+    ShowFacturaProductoComponent
   ],
   imports: [
     CommonModule,

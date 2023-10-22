@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Factura } from 'src/app/shared/interfaces/shared.interface';
 import { FacturasService } from '../../services/facturas.service';
 import Swal from 'sweetalert2';
+import { ShowFacturaProductoComponent } from '../show-factura-producto/show-factura-producto.component';
 
 @Component({
   selector: 'app-facturas-table',
@@ -14,7 +15,8 @@ import Swal from 'sweetalert2';
 export class FacturasTableComponent implements OnInit {
   constructor(
     private facturasService: FacturasService,
-    private factura: MatDialog
+    private factura: MatDialog,
+    private producto: MatDialog
   ) {}
 
   loading: boolean = false;
@@ -49,8 +51,15 @@ export class FacturasTableComponent implements OnInit {
           Swal.fire('Error en la carga', "Razón: " + e.message + ". Consulta con el administrador, por favor.", 'error' );
         }
       }
-      
     );
+  }
+
+  openProducto(producto: any){
+    this.producto.open(ShowFacturaProductoComponent, {
+      data: producto,
+      enterAnimationDuration: 250,
+      exitAnimationDuration: 250,
+    });
   }
 
 }

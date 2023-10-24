@@ -1,3 +1,42 @@
 <div class="d-flex flex-column align-items-baseline">
-    <h1>Dashboard - Desempeño actual</h1>
+  <h1>Dashboard - Desempeño actual</h1>
+  <div class="d-flex gap-2">
+    <div class="card">
+      <div class="card-body">
+        <h3 class="card-title"><strong>Total vendido</strong></h3>
+        <h4 class="card-subtitle mb-2 text-body-secondary">US${{this.totalVendido}}</h4>
+      </div>
+    </div>
+    <div
+      *ngIf="this.cantidadProdsMasVendidos === 1; else maxVentasTable"
+      class="card"
+    >
+      <div class="card-body">
+        <h3 class="card-title"><strong>Producto más vendido</strong></h3>
+        <h4 class="card-subtitle mb-2 text-body-secondary">{{this.prodsMasVendidos[0].producto}}</h4>
+        <p class="card-text">{{this.prodsMasVendidos[0].numVentas}} ventas a la fecha</p>
+      </div>
+    </div>
+    <ng-template #maxVentasTable>
+      <div class="card" #maxVentasTable>
+        <div class="card-body">
+          <h3 class="card-title"><strong>Productos más vendidos</strong></h3>
+          <table class="table-responsive">
+            <thead>
+              <tr>
+                <th scope="col">Producto</th>
+                <th scope="col">Ventas</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let venta of this.prodsMasVendidos">
+                <td>{{venta.producto}}</td>
+                <td>{{venta.numVentas}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </ng-template>
+  </div>
 </div>

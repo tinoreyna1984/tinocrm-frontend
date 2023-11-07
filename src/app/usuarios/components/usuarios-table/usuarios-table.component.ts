@@ -32,9 +32,9 @@ export class UsuariosTableComponent {
     'email',
     'nombreCompleto',
     'role',
-    'habilitado',
+    'bloqueado',
     'modificar',
-    //'habilitar',
+    //'bloquear',
     'borrar',
   ];
 

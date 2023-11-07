@@ -45,11 +45,12 @@ export interface User {
   name:                  string;
   lastName:              string;
   role:                  Role;
-  enabled:               boolean;
-  authorities:           Authority[];
+  accountNonLocked:      boolean;
   accountNonExpired:     boolean;
   credentialsNonExpired: boolean;
-  accountNonLocked:      boolean;
+  enabled:               boolean;
+  failedAttempts:        number;
+  lockTime?:              string;
 }
 
 // enums
@@ -97,3 +98,4 @@ export enum AuthStatus {
   authenticated    = 'authenticated',
   notAuthenticated = 'notAuthenticated',
 }
+

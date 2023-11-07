@@ -25,14 +25,14 @@
       <th mat-header-cell *matHeaderCellDef>Rol</th>
       <td mat-cell *matCellDef="let usuario">{{ usuario.role }}</td>
     </ng-container>
-    <ng-container matColumnDef="habilitado">
-      <th mat-header-cell *matHeaderCellDef>Habilitado</th>
-      <td mat-cell *matCellDef="let usuario">{{ usuario.enabled | enabledStatus }}</td>
+    <ng-container matColumnDef="bloqueado">
+      <th mat-header-cell *matHeaderCellDef>Bloqueado</th>
+      <td mat-cell *matCellDef="let usuario">{{ !usuario.accountNonLocked | accountNonLocked }}</td>
     </ng-container>
-    <!-- <ng-container matColumnDef="habilitar">
+    <!-- <ng-container matColumnDef="bloquear">
       <th mat-header-cell *matHeaderCellDef></th>
       <td mat-cell *matCellDef="let usuario">
-        <button type="button" class="btn btn-outline-info my-2">{{usuario.enabled ? "Deshabilitar" : "Habilitar"}}</button>
+        <button type="button" class="btn btn-outline-info my-2">{{!usuario.accountNonLocked ? "Desbloquear" : "Bloquear"}}</button>
       </td>
     </ng-container> -->
     <ng-container matColumnDef="modificar">

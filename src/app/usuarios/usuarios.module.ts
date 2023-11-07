@@ -11,6 +11,7 @@ import { DeleteUsuarioComponent } from './components/delete-usuario/delete-usuar
 import { AddUsuarioComponent } from './components/add-usuario/add-usuario.component';
 import { ModifyUsuarioComponent } from './components/modify-usuario/modify-usuario.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AccountNonLockedPipe } from './pipes/account-non-locked.pipe';
 
 
 
@@ -22,7 +23,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     EnabledStatusPipe,
     DeleteUsuarioComponent,
     AddUsuarioComponent,
-    ModifyUsuarioComponent
+    ModifyUsuarioComponent,
+    AccountNonLockedPipe
   ],
   imports: [
     CommonModule,

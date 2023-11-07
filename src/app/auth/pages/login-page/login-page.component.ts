@@ -40,9 +40,9 @@ export class LoginPageComponent {
         this.router.navigate(['/crm']); // dirige a la página "/crm"
       }
     } catch (error: any) {
-      console.log(error);
-      this.errorMsg = error.message;
-      Swal.fire('Error en el acceso', "Razón: " + this.errorMsg + ". Consulta con el administrador, por favor", 'error' );
+      console.log(error.error.mensaje);
+      this.errorMsg = error.error.mensaje;
+      Swal.fire('Error en el acceso', this.errorMsg, 'error' );
     } finally {
       this.loading = false; // Restaura el estado de carga a false, ya sea en éxito o error
     }

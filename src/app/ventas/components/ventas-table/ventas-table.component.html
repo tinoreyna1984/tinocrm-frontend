@@ -1,5 +1,5 @@
 <h1>Ventas</h1>
-<button type="button" class="btn btn-success my-2">Agregar venta</button>
+<button type="button" class="btn btn-success my-2" (click)="openAgregarVenta()">Agregar venta</button>
 <div class="mat-elevation-z8 table-responsive">
   <table mat-table [dataSource]="dataSource" [hidden]="loading">
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

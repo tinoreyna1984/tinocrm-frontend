@@ -69,6 +69,16 @@ export class AuthService {
     return null;
   }
 
+  // obtengo ID del usuario
+  getUserId(): Number | null {
+    const token = localStorage.getItem('jwt');
+    if (token) {
+      const decodedToken: any = jwt_decode(token);
+      return decodedToken.userId;
+    }
+    return null;
+  }
+
   // verifico que el rol sea de administrador
   isAdmin():boolean {
     return this.getRoleFromToken() === 'ADMINISTRATOR';

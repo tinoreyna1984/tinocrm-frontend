@@ -1,1 +1,71 @@
-<p>add-venta works!</p>
+<h1 mat-dialog-title>Agregar venta</h1>
+<div mat-dialog-content>
+  <form>
+    <div class="mb-3">
+      <label for="ordenVenta" class="form-label">Orden</label>
+      <input
+        type="text"
+        id="ordenVenta"
+        formControlName="ordenVenta"
+        class="form-control"
+        required
+      />
+    </div>
+    <div class="mb-3">
+      <label for="descVenta" class="form-label">Detalle de la venta</label>
+      <input
+        type="text"
+        id="descVenta"
+        formControlName="descVenta"
+        class="form-control"
+        required
+      />
+    </div>
+    <div class="mb-3">
+      <label for="estadoVenta" class="form-label">Estado de la venta</label>
+      <select
+        id="estadoVenta"
+        class="form-select"
+        formControlName="estadoVenta"
+        required
+      >
+        <option selected value="LEAD">LEAD</option>
+        <option value="CONTACTO">CONTACTO</option>
+        <option value="PRESENTAR_PRODUCTO">PRESENTAR_PRODUCTO</option>
+        <option value="PROPUESTA">PROPUESTA</option>
+        <option value="NEGOCIACION">NEGOCIACION</option>
+        <option value="EN_PROCESO">EN_PROCESO</option>
+        <option value="CIERRE_PERDIDA">CIERRE_PERDIDA</option>
+        <option value="CIERRE_GANADO">CIERRE_GANADO</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label class="form-label" for="fechaReserva">Fecha de reserva</label>
+      <input
+        class="form-control"
+        type="date"
+        id="fechaReserva"
+        formControlName="fechaReserva"
+      />
+    </div>
+    <div class="mb-3">
+      <button class="btn btn-info">
+        Generar factura
+      </button>
+    </div>
+    <div mat-dialog-actions class="d-flex gap-2 p-2">
+      <button
+        type="submit"
+        mat-button
+        mat-dialog-close
+        class="btn btn-success"
+        disabled="true"
+      >
+        Agregar
+      </button>
+      <button mat-button mat-dialog-close class="btn btn-secondary">
+        Cancelar
+      </button>
+    </div>
+  </form>
+</div>

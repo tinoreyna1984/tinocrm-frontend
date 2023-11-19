@@ -8,6 +8,7 @@ import { ShowVentaClienteComponent } from '../show-venta-cliente/show-venta-clie
 import { ShowVentaFacturaComponent } from '../show-venta-factura/show-venta-factura.component';
 import { DeleteVentaComponent } from '../delete-venta/delete-venta.component';
 import Swal from 'sweetalert2';
+import { AddVentaComponent } from '../add-venta/add-venta.component';
 
 @Component({
   selector: 'app-ventas-table',
@@ -76,6 +77,33 @@ export class VentasTableComponent implements OnInit {
       data: factura,
       enterAnimationDuration: 250,
       exitAnimationDuration: 250,
+    });
+  }
+
+  openAgregarVenta(){
+    const dialogRef = this.cliente.open(AddVentaComponent, {
+      enterAnimationDuration: 250,
+      exitAnimationDuration: 250,
+    });
+
+    // después de cerrar, refresca las ventas
+    dialogRef.afterClosed().subscribe(() => {
+      this.loading = true;
+      setTimeout(() => {
+        this.ventasService.getVentas().subscribe(
+          {
+            next: (ventas: Venta[]) => {
+              this.dataSource.data = ventas;
+              this.loading = false;
+            },
+            error: (e:any) => {
+              //console.error(e.message);
+              this.loading = false;
+              Swal.fire('Error en la carga', "Razón: " + e.message + ". Consulta con el administrador, por favor.", 'error' );
+            }
+          }
+        );
+      }, 1800);
     });
   }
 

@@ -33,6 +33,33 @@ export class VentasService {
     );
   }
 
+  getNextVentaID(): Observable<Number> {
+    const token = localStorage.getItem('jwt');
+    const headers = { 'Authorization': 'Bearer ' + token }
+    return this.http.get<any>(`${this.baseUrl}/ventas/next-id-venta`, { headers })
+    .pipe(
+      map((nextVentaId: Number) => nextVentaId)
+    );
+  }
+
+  addVenta(formAddVenta:any): Observable<Venta>{
+    const token = localStorage.getItem('jwt');
+    const headers = { 'Authorization': 'Bearer ' + token }
+    return this.http.post<any>(`${this.baseUrl}/ventas`, formAddVenta, { headers })
+    .pipe(
+      map((response: any) => response)
+    );
+  }
+
+  modifyVenta(formModifyVenta:any, id: string): Observable<Venta>{
+    const token = localStorage.getItem('jwt');
+    const headers = { 'Authorization': 'Bearer ' + token }
+    return this.http.put<any>(`${this.baseUrl}/ventas/${id}`, formModifyVenta, { headers })
+    .pipe(
+      map((response: any) => response)
+    );
+  }
+
   borrarVenta(id: string) {
     const token = localStorage.getItem('jwt');
     const headers = { 'Authorization': 'Bearer ' + token }

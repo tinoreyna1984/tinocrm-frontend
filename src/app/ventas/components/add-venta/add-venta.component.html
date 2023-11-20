@@ -1,6 +1,11 @@
 <h1 mat-dialog-title>Agregar venta</h1>
 <div mat-dialog-content>
-  <form>
+  <form [formGroup]="formAddVenta" (ngSubmit)="onAddVenta()">
+    <div class="mb-3">
+      <button class="btn btn-info" (click)="openGeneraFactura()">
+        Generar factura
+      </button>
+    </div>
     <div class="mb-3">
       <label for="ordenVenta" class="form-label">Orden</label>
       <input
@@ -8,6 +13,7 @@
         id="ordenVenta"
         formControlName="ordenVenta"
         class="form-control"
+        [value]="this.ordenVenta"
         required
       />
     </div>
@@ -29,14 +35,9 @@
         formControlName="estadoVenta"
         required
       >
-        <option selected value="LEAD">LEAD</option>
-        <option value="CONTACTO">CONTACTO</option>
-        <option value="PRESENTAR_PRODUCTO">PRESENTAR_PRODUCTO</option>
-        <option value="PROPUESTA">PROPUESTA</option>
-        <option value="NEGOCIACION">NEGOCIACION</option>
-        <option value="EN_PROCESO">EN_PROCESO</option>
-        <option value="CIERRE_PERDIDA">CIERRE_PERDIDA</option>
-        <option value="CIERRE_GANADO">CIERRE_GANADO</option>
+        <option selected value="RESERVADO">RESERVADO</option>
+        <option value="CANCELADO">CANCELADO</option>
+        <option value="PAGADO">PAGADO</option>
       </select>
     </div>
     <div class="mb-3">
@@ -49,9 +50,17 @@
       />
     </div>
     <div class="mb-3">
-      <button class="btn btn-info">
-        Generar factura
-      </button>
+      <label for="clienteId" class="form-label">Cliente</label>
+      <select
+        id="clienteId"
+        class="form-select"
+        formControlName="clienteId"
+        required
+      >
+        <option *ngFor="let cliente of clientes" value="{{ cliente.id }}">
+          {{ cliente.nombreCliente }} {{ cliente.apellidosCliente }} [{{ cliente.estadoCliente }}]
+        </option>
+      </select>
     </div>
     <div mat-dialog-actions class="d-flex gap-2 p-2">
       <button
@@ -59,7 +68,6 @@
         mat-button
         mat-dialog-close
         class="btn btn-success"
-        disabled="true"
       >
         Agregar
       </button>

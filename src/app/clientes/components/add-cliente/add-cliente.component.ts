@@ -49,7 +49,7 @@ export class AddClienteComponent {
         },
         error: (e:any) => {
           //console.error(e.message);
-          Swal.fire('Error al agregar producto', "Razón: " + e.message + ". Consulta con el administrador, por favor.", 'error' );
+          Swal.fire('Error al agregar cliente', "Razón: " + e.message + ". Consulta con el administrador, por favor.", 'error' );
         }
       }
     )

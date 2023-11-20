@@ -33,6 +33,24 @@ export class FacturasService {
     );
   }
 
+  addFactura(formAddFactura:any): Observable<Factura>{
+    const token = localStorage.getItem('jwt');
+    const headers = { 'Authorization': 'Bearer ' + token }
+    return this.http.post<any>(`${this.baseUrl}/facturas`, formAddFactura, { headers })
+    .pipe(
+      map((response: any) => response)
+    );
+  }
+
+  modifyVenta(formModifyFactura:any, id: string): Observable<Factura>{
+    const token = localStorage.getItem('jwt');
+    const headers = { 'Authorization': 'Bearer ' + token }
+    return this.http.put<any>(`${this.baseUrl}/facturas/${id}`, formModifyFactura, { headers })
+    .pipe(
+      map((response: any) => response)
+    );
+  }
+
   borrarFactura(id: string) {
     const token = localStorage.getItem('jwt');
     const headers = { 'Authorization': 'Bearer ' + token }

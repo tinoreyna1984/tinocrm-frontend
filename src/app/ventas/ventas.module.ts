@@ -11,6 +11,8 @@ import { DeleteVentaComponent } from './components/delete-venta/delete-venta.com
 import { ShowVentaClienteComponent } from './components/show-venta-cliente/show-venta-cliente.component';
 import { ShowVentaFacturaComponent } from './components/show-venta-factura/show-venta-factura.component';
 import { SharedModule } from '../shared/shared.module';
+import { GeneraFacturaComponent } from './components/genera-factura/genera-factura.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -23,13 +25,16 @@ import { SharedModule } from '../shared/shared.module';
     ModifyVentaComponent,
     DeleteVentaComponent,
     ShowVentaClienteComponent,
-    ShowVentaFacturaComponent
+    ShowVentaFacturaComponent,
+    GeneraFacturaComponent
   ],
   imports: [
     CommonModule,
     VentasRoutingModule,
     MaterialModule,
-    SharedModule
+    SharedModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class VentasModule { }

@@ -82,6 +82,7 @@ export class VentasTableComponent implements OnInit {
 
   openAgregarVenta(){
     const dialogRef = this.cliente.open(AddVentaComponent, {
+      disableClose: true,
       enterAnimationDuration: 250,
       exitAnimationDuration: 250,
     });

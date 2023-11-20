@@ -1,1 +1,47 @@
-<p>modify-venta works!</p>
+<h1 mat-dialog-title>Modificar venta</h1>
+<div mat-dialog-content>
+  <form [hidden]="loading" [formGroup]="formModifyVenta" (ngSubmit)="onModifyVenta()">
+    <div class="mb-3">
+      <label for="ordenVenta" class="form-label">Orden</label>
+      <input
+        type="text"
+        id="ordenVenta"
+        formControlName="ordenVenta"
+        class="form-control"
+        required
+      />
+    </div>
+    <div class="mb-3">
+      <label for="descVenta" class="form-label">Detalle de la venta</label>
+      <textarea
+        type="text"
+        id="descVenta"
+        formControlName="descVenta"
+        class="form-control"
+        required
+      ></textarea>
+    </div>
+    <div class="mb-3">
+      <label for="estadoVenta" class="form-label">Estado de la venta</label>
+      <select
+        id="estadoVenta"
+        class="form-select"
+        formControlName="estadoVenta"
+        required
+      >
+        <option selected value="RESERVADO">RESERVADO</option>
+        <option value="CANCELADO">CANCELADO</option>
+        <option value="PAGADO">PAGADO</option>
+      </select>
+    </div>
+    <div mat-dialog-actions class="d-flex gap-2 p-2">
+      <button type="submit" mat-button mat-dialog-close class="btn btn-success">
+        Modificar
+      </button>
+      <button mat-button mat-dialog-close class="btn btn-secondary">
+        Cancelar
+      </button>
+    </div>
+  </form>
+  <app-spinner [loading]="loading"></app-spinner>
+</div>

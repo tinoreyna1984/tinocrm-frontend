@@ -10,6 +10,7 @@ import { DeleteVentaComponent } from '../delete-venta/delete-venta.component';
 import Swal from 'sweetalert2';
 import { AddVentaComponent } from '../add-venta/add-venta.component';
 import { ModifyVentaComponent } from '../modify-venta/modify-venta.component';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-ventas-table',
@@ -29,6 +30,9 @@ export class VentasTableComponent implements OnInit {
   public dataSource: MatTableDataSource<Venta> = new MatTableDataSource<Venta>(
     []
   );
+
+  private baseUrl: string = environment.baseUrl;
+  export: string = `${this.baseUrl}/export/xls/ventas`;
 
   displayedColumns: string[] = [
     'id',

@@ -1,5 +1,8 @@
 <h1>Clientes</h1>
-<button type="button" class="btn btn-success my-2" (click)="openAgregarCliente()" [disabled]="loading">Agregar cliente</button>
+<div class="my-2 d-flex gap-2">
+  <button type="button" class="btn btn-success" (click)="openAgregarCliente()" [disabled]="loading">Agregar cliente</button>
+  <a class="btn btn-info" href={{this.export}}>Exportar a Excel</a>
+</div>
 <div class="mat-elevation-z8 table-responsive">
   <table mat-table [dataSource]="dataSource" [hidden]="loading">
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

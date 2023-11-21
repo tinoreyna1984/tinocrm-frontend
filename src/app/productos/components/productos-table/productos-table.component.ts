@@ -9,6 +9,7 @@ import { DeleteProductoComponent } from '../delete-producto/delete-producto.comp
 import { AddProductoComponent } from '../add-producto/add-producto.component';
 import Swal from 'sweetalert2';
 import { ModifyProductoComponent } from '../modify-producto/modify-producto.component';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-productos-table',
@@ -28,6 +29,9 @@ export class ProductosTableComponent {
   public dataSource: MatTableDataSource<Producto> =
     new MatTableDataSource<Producto>([]);
 
+  private baseUrl: string = environment.baseUrl;
+  export: string = `${this.baseUrl}/export/xls/productos`;
+    
   displayedColumns: string[] = [
     'id',
     'nombreProducto',

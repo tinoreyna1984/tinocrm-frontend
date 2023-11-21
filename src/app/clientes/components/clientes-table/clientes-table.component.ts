@@ -8,6 +8,7 @@ import { DeleteClienteComponent } from '../delete-cliente/delete-cliente.compone
 import Swal from 'sweetalert2';
 import { AddClienteComponent } from '../add-cliente/add-cliente.component';
 import { ModifyClienteComponent } from '../modify-cliente/modify-cliente.component';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-clientes-table',
@@ -25,6 +26,9 @@ export class ClientesTableComponent implements OnInit {
   public dataSource: MatTableDataSource<Cliente> = new MatTableDataSource<Cliente>(
     []
   );
+
+  private baseUrl: string = environment.baseUrl;
+  export: string = `${this.baseUrl}/export/xls/clientes`;
   
   displayedColumns: string[] = [
     'id',

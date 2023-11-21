@@ -1,7 +1,16 @@
 <h1>Productos</h1>
-<button type="button" class="btn btn-success my-2" *ngIf="this.isAdminFlag" (click)="openAgregarProducto()" [disabled]="loading">
-  Agregar producto
-</button>
+<div class="my-2 d-flex gap-2">
+  <button
+    type="button"
+    class="btn btn-success"
+    *ngIf="this.isAdminFlag"
+    (click)="openAgregarProducto()"
+    [disabled]="loading"
+  >
+    Agregar producto
+  </button>
+  <a class="btn btn-info" href="{{ this.export }}">Exportar a Excel</a>
+</div>
 <div class="mat-elevation-z8 table-responsive">
   <table mat-table [dataSource]="dataSource" [hidden]="loading">
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -26,13 +35,27 @@
     <ng-container matColumnDef="modificar">
       <th mat-header-cell *matHeaderCellDef></th>
       <td mat-cell *matCellDef="let producto">
-        <button type="button" class="btn btn-info my-2" (click)="openModificarProducto(producto.id)" *ngIf="this.isAdminFlag">Modificar</button>
+        <button
+          type="button"
+          class="btn btn-info my-2"
+          (click)="openModificarProducto(producto.id)"
+          *ngIf="this.isAdminFlag"
+        >
+          Modificar
+        </button>
       </td>
     </ng-container>
-    <ng-container matColumnDef="borrar" >
+    <ng-container matColumnDef="borrar">
       <th mat-header-cell *matHeaderCellDef></th>
       <td mat-cell *matCellDef="let producto">
-        <button type="button" class="btn btn-danger my-2" (click)="openBorrarProducto(producto.id)" *ngIf="this.isAdminFlag">Eliminar</button>
+        <button
+          type="button"
+          class="btn btn-danger my-2"
+          (click)="openBorrarProducto(producto.id)"
+          *ngIf="this.isAdminFlag"
+        >
+          Eliminar
+        </button>
       </td>
     </ng-container>
   </table>
